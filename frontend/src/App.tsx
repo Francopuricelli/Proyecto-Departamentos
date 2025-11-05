@@ -6,7 +6,7 @@ import { useAuthStore } from './store/authStore';
 import { HomePage } from './pages/HomePage';
 import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
-// import ApartmentsPage from './pages/ApartmentsPage';
+import { ApartmentsPage } from './pages/ApartmentsPage';
 // import ApartmentDetailPage from './pages/ApartmentDetailPage';
 // import BookingsPage from './pages/BookingsPage';
 // import ProfilePage from './pages/ProfilePage';
@@ -27,7 +27,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          {/* <Route path="/apartments" element={<ApartmentsPage />} /> */}
+          <Route path="/apartments" element={<ApartmentsPage />} />
           {/* <Route path="/apartments/:id" element={<ApartmentDetailPage />} /> */}
           <Route
             path="/login"

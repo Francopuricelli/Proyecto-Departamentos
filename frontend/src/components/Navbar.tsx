@@ -23,14 +23,12 @@ export const Navbar = () => {
 
           {/* Navigation Links */}
           <div className="flex items-center space-x-6">
-            {/* Temporalmente deshabilitado hasta crear la página
             <Link
               to="/apartments"
               className="text-gray-700 hover:text-blue-600 transition font-medium"
             >
               Departamentos
             </Link>
-            */}
 
             {isAuthenticated ? (
               <>

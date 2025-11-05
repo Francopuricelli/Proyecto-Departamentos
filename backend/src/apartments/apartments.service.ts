@@ -105,7 +105,32 @@ export class ApartmentsService {
       throw new Error('Error al obtener apartamentos');
     }
 
-    return data;
+    // Mapear snake_case a camelCase
+    return data.map(apt => this.mapApartmentToCamelCase(apt));
+  }
+
+  private mapApartmentToCamelCase(apartment: any) {
+    return {
+      id: apartment.id,
+      title: apartment.title,
+      description: apartment.description,
+      bedrooms: apartment.bedrooms,
+      bathrooms: apartment.bathrooms,
+      maxGuests: apartment.max_guests,
+      pricePerNight: apartment.price_per_night,
+      address: apartment.address,
+      city: apartment.city,
+      country: apartment.country,
+      squareMeters: apartment.square_meters,
+      amenities: apartment.amenities,
+      isAvailable: apartment.is_available,
+      createdAt: apartment.created_at,
+      updatedAt: apartment.updated_at,
+      images: apartment.images?.map((img: any) => ({
+        imageUrl: img.image_url,
+        isMain: img.is_main,
+      })) || [],
+    };
   }
 
   async findOne(id: string) {
@@ -122,7 +147,7 @@ export class ApartmentsService {
       throw new NotFoundException(`Apartamento con ID ${id} no encontrado`);
     }
 
-    return data;
+    return this.mapApartmentToCamelCase(data);
   }
 
   async update(id: string, updateApartmentDto: UpdateApartmentDto) {
